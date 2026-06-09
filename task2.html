@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YouTube Video Chapters - Interactive carousel with chapter navigation and automated chapter generator" />
+  <title>Video Chapters | YouTube Chapter Navigator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="task2.css" />
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <p class="hero__tag">YouTube Tools</p>
+      <h1 class="hero__title">Video <span class="gradient-text">Chapters</span></h1>
+      <p class="hero__subtitle">Navigate videos effortlessly. Jump to any section instantly.</p>
+    </div>
+  </header>
+
+  <!-- ============ SECTION 1: Video Carousel + Chapters ============ -->
+  <section class="video-section" id="videoSection">
+    <div class="container">
+
+      <!-- Video Selector Tabs -->
+      <div class="video-tabs" id="videoTabs">
+        <button class="video-tab active" data-index="0">
+          <img class="video-tab__thumb" src="https://i.ytimg.com/vi/RJTCAL1DRro/mqdefault.jpg" alt="L30 Penthouse" />
+          <div class="video-tab__info">
+            <span class="video-tab__title">L30 Penthouse</span>
+            <span class="video-tab__channel">Total Environment</span>
+          </div>
+          <div class="video-tab__indicator"></div>
+        </button>
+        <button class="video-tab" data-index="1">
+          <img class="video-tab__thumb" src="https://i.ytimg.com/vi/jj_aUFX8SV8/mqdefault.jpg" alt="After the Rain" />
+          <div class="video-tab__info">
+            <span class="video-tab__title">After the Rain</span>
+            <span class="video-tab__channel">Total Environment</span>
+          </div>
+          <div class="video-tab__indicator"></div>
+        </button>
+        <button class="video-tab" data-index="2">
+          <img class="video-tab__thumb" src="https://i.ytimg.com/vi/xmmxkmVSiq0/mqdefault.jpg" alt="V40 Courtyard Homes" />
+          <div class="video-tab__info">
+            <span class="video-tab__title">V40 Courtyard Homes</span>
+            <span class="video-tab__channel">Total Environment</span>
+          </div>
+          <div class="video-tab__indicator"></div>
+        </button>
+      </div>
+
+      <!-- Main Player + Chapters -->
+      <div class="player-layout">
+        <!-- Player Area -->
+        <div class="player-area">
+          <div class="player-wrapper" id="playerWrapper">
+            <div id="ytPlayer"></div>
+          </div>
+          <div class="player-info">
+            <h2 class="player-info__title" id="videoTitle">L30 Penthouse | Pursuit of a Radical Rhapsody</h2>
+            <p class="player-info__channel" id="videoChannel">Total Environment</p>
+          </div>
+        </div>
+
+        <!-- Chapters Panel -->
+        <aside class="chapters-panel" id="chaptersPanel">
+          <div class="chapters-header">
+            <svg class="chapters-header__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            <h3 class="chapters-header__title">Chapters</h3>
+          </div>
+          <div class="chapters-list" id="chaptersList">
+            <!-- Populated by JS -->
+          </div>
+          <div class="chapters-progress">
+            <div class="chapters-progress__bar" id="chapterProgressBar"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: Automated Chapter Generator ============ -->
+  <section class="generator-section" id="generatorSection">
+    <div class="container">
+      <div class="generator-header">
+        <div class="generator-header__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Automated
+        </div>
+        <h2 class="generator-header__title">Chapter <span class="gradient-text">Generator</span></h2>
+        <p class="generator-header__subtitle">Paste any YouTube URL and we'll automatically detect suitable chapter points in the video.</p>
+      </div>
+
+      <div class="generator-card">
+        <!-- URL Input -->
+        <div class="generator-input-group">
+          <div class="generator-input-wrapper">
+            <svg class="generator-input__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <input type="text" id="urlInput" class="generator-input" placeholder="Paste YouTube URL here..." />
+          </div>
+          <button class="generator-btn" id="generateBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Generate Chapters
+          </button>
+        </div>
+
+        <!-- Loading State -->
+        <div class="generator-loading" id="generatorLoading">
+          <div class="spinner"></div>
+          <p>Analyzing video content...</p>
+        </div>
+
+        <!-- Results -->
+        <div class="generator-results" id="generatorResults">
+          <div class="generator-results__header">
+            <div class="generator-results__video-info" id="genVideoInfo"></div>
+            <button class="copy-btn" id="copyBtn" title="Copy chapters to clipboard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="generator-chapters" id="generatorChapters"></div>
+          <div class="generator-code" id="generatorCode">
+            <div class="generator-code__header">
+              <span>YouTube Description Format</span>
+              <button class="copy-code-btn" id="copyCodeBtn">Copy Code</button>
+            </div>
+            <pre id="generatorCodePre"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="task2.js"></script>
+</body>
+</html>

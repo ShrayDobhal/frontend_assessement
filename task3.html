@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YouTube Video Lead Capture Form - Smooth overlay form shown after 6 seconds of video playback" />
+  <title>Lead Capture Form | YouTube Video Overlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="task3.css" />
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <p class="hero__tag">Lead Generation</p>
+      <h1 class="hero__title">Video <span class="gradient-text">Lead Form</span></h1>
+      <p class="hero__subtitle">Capture high-intent leads from users watching your videos. A form appears smoothly at the 6-second mark.</p>
+    </div>
+  </header>
+
+  <!-- ============ Video + Form Section ============ -->
+  <section class="video-section" id="videoSection">
+    <div class="container">
+
+      <!-- Instructions -->
+      <div class="instructions">
+        <div class="instructions__step">
+          <div class="instructions__num">1</div>
+          <p>Press <strong>Play</strong> on the video below</p>
+        </div>
+        <div class="instructions__divider"></div>
+        <div class="instructions__step">
+          <div class="instructions__num">2</div>
+          <p>Watch for <strong>6 seconds</strong></p>
+        </div>
+        <div class="instructions__divider"></div>
+        <div class="instructions__step">
+          <div class="instructions__num">3</div>
+          <p>A <strong>lead form</strong> appears smoothly</p>
+        </div>
+      </div>
+
+      <!-- Player Container -->
+      <div class="player-container">
+        <div class="player-wrapper" id="playerWrapper">
+          <div id="ytPlayer"></div>
+
+          <!-- Overlay Form -->
+          <div class="form-overlay" id="formOverlay">
+            <div class="form-card" id="formCard">
+              <button class="form-close" id="formClose" aria-label="Close form">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+
+              <div class="form-card__header">
+                <div class="form-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                    <path d="M10 9l5 3-5 3V9z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3 class="form-card__title">Interested in this property?</h3>
+                <p class="form-card__subtitle">Fill in your details and our team will get back to you within 24 hours.</p>
+              </div>
+
+              <form class="lead-form" id="leadForm">
+                <div class="form-group">
+                  <label class="form-label" for="leadName">Full Name</label>
+                  <input type="text" id="leadName" class="form-input" placeholder="John Doe" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="leadEmail">Email Address</label>
+                  <input type="email" id="leadEmail" class="form-input" placeholder="john@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="leadPhone">Phone Number</label>
+                  <input type="tel" id="leadPhone" class="form-input" placeholder="+91 98765 43210" />
+                </div>
+                <button type="submit" class="form-submit" id="formSubmit">
+                  Get Details
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <p class="form-disclaimer">By submitting, you agree to be contacted regarding this property.</p>
+              </form>
+
+              <!-- Success State -->
+              <div class="form-success" id="formSuccess">
+                <div class="form-success__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3 class="form-success__title">Thank You!</h3>
+                <p class="form-success__text">We've received your details. Our team will reach out to you shortly.</p>
+                <button type="button" class="form-success__btn" id="resumeBtn">Resume Video</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Info -->
+        <div class="player-info">
+          <h2 class="player-info__title">L30 Penthouse | Pursuit of a Radical Rhapsody</h2>
+          <p class="player-info__channel">Total Environment</p>
+        </div>
+
+        <!-- Timer Indicator -->
+        <div class="timer-bar" id="timerBar">
+          <div class="timer-bar__fill" id="timerFill"></div>
+          <span class="timer-bar__label" id="timerLabel">Form appears in 6s</span>
+        </div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="how-it-works">
+        <h3 class="how-it-works__title">How It Works</h3>
+        <div class="how-it-works__grid">
+          <div class="how-card">
+            <div class="how-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <h4>User Plays Video</h4>
+            <p>The visitor clicks play on an embedded YouTube video on your website.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>6-Second Trigger</h4>
+            <p>After 6 seconds of active playback, the system detects high engagement intent.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/></svg>
+            </div>
+            <h4>Smooth Form Overlay</h4>
+            <p>A beautifully animated lead capture form slides in over the video without disrupting UX.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Lead Captured</h4>
+            <p>The advertiser captures a qualified lead — someone who watched and showed interest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="task3.js"></script>
+</body>
+</html>

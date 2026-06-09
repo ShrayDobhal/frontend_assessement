@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frontend Assessment | Shray Dobhal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+                 "Segoe UI",sans-serif;
+}
+
+body{
+    background:#f5f5f7;
+    color:#1d1d1f;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    color:#6e6e73;
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:
+    0 4px 20px rgba(0,0,0,0.05);
+    transition:all .3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.1);
+}
+
+.task{
+    color:#0071e3;
+    font-size:0.9rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.card h2{
+    margin-bottom:15px;
+    font-size:1.8rem;
+}
+
+.card p{
+    color:#6e6e73;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#0071e3;
+    color:white;
+    padding:12px 24px;
+    border-radius:999px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#0058b9;
+}
+
+footer{
+    text-align:center;
+    margin-top:80px;
+    color:#86868b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>Frontend Assessment</h1>
+        <p>
+            A collection of frontend implementations showcasing responsive
+            design, clean user interfaces, and component integration.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="task">TASK 01</div>
+            <h2>Interactive UI</h2>
+            <p>Frontend implementation and responsive component design.</p>
+            <a href="task1.html" class="btn">View Task</a>
+        </div>
+
+        <div class="card">
+            <div class="task">TASK 02</div>
+            <h2>Component Build</h2>
+            <p>Demonstration of layout structure and interaction handling.</p>
+            <a href="task2.html" class="btn">View Task</a>
+        </div>
+
+        <div class="card">
+            <div class="task">TASK 03</div>
+            <h2>Frontend Integration</h2>
+            <p>Responsive implementation with clean code organization.</p>
+            <a href="task3.html" class="btn">View Task</a>
+        </div>
+
+    </div>
+
+    <footer>
+        Developed by Shray Dobhal
+    </footer>
+
+</div>
+
+</body>
+</html>
